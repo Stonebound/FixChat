@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="BetterChat" default="jar">
+  <target name="jar" description="jar">
+    <jar jarfile="/Users/kovuthehusky/Resources/Minecraft/plugins/BetterChat.jar">
+      <fileset dir="target/classes/" />
+    </jar>
+  </target>
+</project>
