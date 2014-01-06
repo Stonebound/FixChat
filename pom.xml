@@ -4,10 +4,11 @@
 
   <groupId>com.codeski</groupId>
   <artifactId>betterchat</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>BetterChat</name>
+  <description>Adds functionality and commands to make sending whispers to players easier.</description>
   
   <repositories>
     <repository>
@@ -44,7 +45,13 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.7.2-R0.1-SNAPSHOT</version>
+      <version>1.7.2-R0.3-SNAPSHOT</version>
     </dependency>
   </dependencies>
+  
+  <url>http://codeski.com/betterchat</url>
+  <organization>
+    <name>Codeski</name>
+    <url>http://codeski.com</url>
+  </organization>
 </project>
