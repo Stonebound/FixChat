@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.codeski</groupId>
   <artifactId>betterchat</artifactId>
-  <version>1.0.1</version>
+  <version>1.1.0</version>
   <packaging>jar</packaging>
   <name>BetterChat</name>
   <description>Adds functionality and commands to make sending whispers to players easier.</description>
@@ -10,6 +10,10 @@
     <repository>
       <id>bukkit-repo</id>
       <url>http://repo.bukkit.org/content/groups/public/</url>
+    </repository>
+    <repository>
+      <id>dynmap-repo</id>
+      <url>http://repo.mikeprimm.com/</url>
     </repository>
   </repositories>
   <properties>
@@ -38,7 +42,12 @@
     <dependency>
       <groupId>org.bukkit</groupId>
       <artifactId>bukkit</artifactId>
-      <version>1.7.9-R0.1-SNAPSHOT</version>
+      <version>1.7.9-R0.2-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.dynmap</groupId>
+      <artifactId>DynmapCoreAPI</artifactId>
+      <version>1.9.4</version>
     </dependency>
   </dependencies>
   <url>http://codeski.com/betterchat</url>
