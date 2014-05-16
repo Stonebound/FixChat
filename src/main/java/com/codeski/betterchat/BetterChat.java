@@ -28,7 +28,6 @@ public class BetterChat extends JavaPlugin implements Listener
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		Bukkit.broadcastMessage("fire");
 		Player from = null;
 		if (Player.class.isInstance(sender))
 			from = (Player) sender;
@@ -103,7 +102,6 @@ public class BetterChat extends JavaPlugin implements Listener
 
 	@EventHandler
 	public void onServerCommand(ServerCommandEvent event) {
-		Bukkit.broadcastMessage("This message is: '" + event.getCommand() + "'");
 		String[] msg = event.getCommand().split("\\s+");
 		if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("say"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb("Server", Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));

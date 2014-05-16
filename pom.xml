@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.codeski</groupId>
   <artifactId>betterchat</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <packaging>jar</packaging>
   <name>BetterChat</name>
   <description>Adds functionality and commands to make sending whispers to players easier.</description>
