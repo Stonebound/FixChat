@@ -107,5 +107,7 @@ public class BetterChat extends JavaPlugin implements Listener
 		String[] msg = event.getCommand().split("\\s+");
 		if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("say"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb("Server", Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
+		else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("me"))
+			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, "* CONSOLE " + Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
 	}
 }
