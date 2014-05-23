@@ -12,6 +12,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerAchievementAwardedEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerCommandEvent;
@@ -23,6 +24,53 @@ import com.google.common.base.Joiner;
 
 public class BetterChat extends JavaPlugin implements Listener
 {
+	public enum Achievement {
+		ACQUIRE_IRON("Acquire Hardware"),
+		BAKE_CAKE("The Lie"),
+		BOOKCASE("Librarian"),
+		BREED_COW("Repopulation"),
+		BREW_POTION("Local Brewery"),
+		BUILD_BETTER_PICKAXE("Getting an Upgrade"),
+		BUILD_FURNACE("Hot Topic"),
+		BUILD_HOE("Time to Farm!"),
+		BUILD_PICKAXE("Time to Mine!"),
+		BUILD_SWORD("Time to Strike!"),
+		BUILD_WORKBENCH("Benchmarking"),
+		COOK_FISH("Delicious Fish"),
+		DIAMONDS_TO_YOU("Diamonds to you!"),
+		ENCHANTMENTS("Enchanter"),
+		END_PORTAL("The End?"),
+		EXPLORE_ALL_BIOMES("Adventuring Time"),
+		FLY_PIG("When Pigs Fly"),
+		FULL_BEACON("Beaconator"),
+		GET_BLAZE_ROD("Into Fire"),
+		GET_DIAMONDS("DIAMONDS!"),
+		GHAST_RETURN("Return to Sender"),
+		KILL_COW("Cow Tipper"),
+		KILL_ENEMY("Monster Hunter"),
+		KILL_WITHER("The Beginning."),
+		MAKE_BREAD("Bake Bread"),
+		MINE_WOOD("Getting Wood"),
+		NETHER_PORTAL("We Need to Go Deeper"),
+		ON_A_RAIL("On A Rail"),
+		OPEN_INVENTORY("Taking Inventory"),
+		OVERKILL("Overkill"),
+		SNIPE_SKELETON("Sniper Duel"),
+		SPAWN_WITHER("The Beginning?"),
+		THE_END("The End.");
+		//
+		private final String name;
+
+		private Achievement(String name) {
+			this.name = name;
+		}
+
+		@Override
+		public String toString() {
+			return name;
+		}
+	}
+
 	private final HashMap<Player, Player> reply = new HashMap<Player, Player>();
 	private Server server;
 
@@ -70,6 +118,12 @@ public class BetterChat extends JavaPlugin implements Listener
 	}
 
 	@EventHandler
+	public void onPlayerAchievement(PlayerAchievementAwardedEvent event) {
+		if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
+			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, event.getPlayer().getName() + " has just earned the achievement [" + Achievement.valueOf(event.getAchievement().name()) + "]");
+	}
+
+	@EventHandler
 	public void onPlayerCommand(PlayerCommandPreprocessEvent event) {
 		String[] msg = event.getMessage().split("\\s+");
 		if (msg.length > 2 && msg[0].equalsIgnoreCase("/tell")) {
@@ -81,8 +135,6 @@ public class BetterChat extends JavaPlugin implements Listener
 				reply.put(to, event.getPlayer());
 		} else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("/say") && event.getPlayer().hasPermission("bukkit.command.say"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(event.getPlayer().getName(), Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
-		else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("/me") && event.getPlayer().hasPermission("bukkit.command.me"))
-			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, "* " + event.getPlayer().getName() + " " + Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
 	}
 
 	@EventHandler
@@ -107,7 +159,5 @@ public class BetterChat extends JavaPlugin implements Listener
 		String[] msg = event.getCommand().split("\\s+");
 		if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("say"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb("Server", Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
-		else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("me"))
-			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, "* CONSOLE " + Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
 	}
 }
