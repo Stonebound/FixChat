@@ -147,6 +147,7 @@ public class BetterChat extends JavaPlugin implements Listener
 	public void onPlayerJoin(final PlayerJoinEvent event) {
 		if (event.getPlayer().hasPermission("bukkit.command.list"))
 			new BukkitRunnable() {
+				@Override
 				public void run() {
 					server.dispatchCommand(event.getPlayer(), "list");
 				}
