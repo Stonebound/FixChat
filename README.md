@@ -1,7 +1,7 @@
 BetterChat
 ==========
 
-Bukkit plugin that adds functionality and commands to make sending whispers to players easier.
+A plugin for Bukkit servers that adds functionality and commands to make sending whispers to players easier.
 
 License
 ==========
