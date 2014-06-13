@@ -1,4 +1,4 @@
-package com.codeski.betterchat;
+package com.codeski.fixchat;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -22,7 +22,7 @@ import org.dynmap.DynmapCommonAPI;
 
 import com.google.common.base.Joiner;
 
-public class BetterChat extends JavaPlugin implements Listener
+public class FixChat extends JavaPlugin implements Listener
 {
 	public enum Achievement {
 		ACQUIRE_IRON("Acquire Hardware"),

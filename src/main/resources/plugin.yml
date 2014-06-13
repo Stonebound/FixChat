@@ -1,5 +1,5 @@
-name: BetterChat
-main: com.codeski.betterchat.BetterChat
+name: FixChat
+main: com.codeski.fixchat.FixChat
 version: ${project.version}
 commands:
   whisper:

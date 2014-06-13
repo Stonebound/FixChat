@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.codeski</groupId>
-  <artifactId>betterchat</artifactId>
+  <artifactId>fixchat</artifactId>
   <version>1.2.1-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <name>BetterChat</name>
+  <name>FixChat</name>
   <description>Adds functionality and commands to make sending whispers to players easier.</description>
   <repositories>
     <repository>
@@ -20,7 +20,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
-    <finalName>BetterChat-${project.version}</finalName>
+    <finalName>FixChat-${project.version}</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -97,7 +97,7 @@
       <version>1.9.4</version>
     </dependency>
   </dependencies>
-  <url>http://codeski.com/betterchat</url>
+  <url>http://codeski.com/#fixchat</url>
   <organization>
     <name>Codeski</name>
     <url>http://codeski.com</url>
