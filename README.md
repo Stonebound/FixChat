@@ -12,15 +12,15 @@ Simple, lightweight Bukkit plugin that makes chatting with your friends in game,
 
 This plugin adds aliases for the tell command so you can use any of the following to send a whisper:
 
-* /tell <player> <message>
-* /t <player> <message>
-* /whisper <player> <message>
-* /w <player> <message>
+* `/tell <player> <message>`
+* `/t <player> <message>`
+* `/whisper <player> <message>`
+* `/w <player> <message>`
 
 You can also easily reply to the last player you received a whisper from by using the reply command:
 
-* /reply <message>
-* /r <message>
+* `/reply <message>`
+* `/r <message>`
 
 ## Configuration
 
