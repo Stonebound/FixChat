@@ -29,8 +29,8 @@ At this point there is no configuration needed - just drop it into your plugins 
 ## Links
 
 * Website: <http://codeski.com/#fixchat>
-* Issues: <https://github.com/codeski/fixchat/issues>
-* Source: <https://github.com/codeski/fixchat>
+* Issues: <https://github.com/Codeski/FixChat/issues>
+* Source: <https://github.com/Codeski/FixChat>
 * Bukkit: <http://dev.bukkit.org/bukkit-plugins/fixchat>
 
 ## License
