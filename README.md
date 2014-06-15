@@ -1,10 +1,36 @@
-BetterChat
-==========
+FixChat is a simple, lightweight plugin that makes chatting with your friends much easier.
 
-A plugin for Bukkit servers that adds functionality and commands to make sending whispers to players easier.
+# Features
 
-License
-==========
+* Adds **aliases for the tell command** so players can use /tell, /t, /whisper, and /w to send private messages to others.
+* Adds **reply functionality** so players can easily reply using the added /reply and /r commands.
+* Adds **Dynmap integration** to show achievement unlocks, player deaths, /me messages, and /say messages.
+
+# Commands
+
+This plugin adds aliases for the tell command so you can use any of the following to send a whisper:
+
+* /tell <player> <message>
+* /t <player> <message>
+* /whisper <player> <message>
+* /w <player> <message>
+
+You can also easily reply to the last player you received a whisper from by using the reply command:
+
+* /reply <message>
+* /r <message>
+
+# Configuration
+
+At this point there is no configuration needed - just drop in into your plugins directory.
+
+# Links
+
+* Website: <http://codeski.com/#fixchat>
+* Issues: <https://github.com/codeski/fixchat/issues>
+* Source: <https://github.com/codeski/fixchat>
+
+# License
 
 Copyright © 2013 Kevin Breslin
 
