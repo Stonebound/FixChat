@@ -1,6 +1,6 @@
 # FixChat
 
-FixChat is a simple, lightweight plugin that makes chatting with your friends much easier.
+Simple, lightweight Bukkit plugin that makes chatting with your friends in game, and on dynmap much easier.
 
 ## Features
 
