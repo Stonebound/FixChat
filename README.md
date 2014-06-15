@@ -1,12 +1,14 @@
+# FixChat
+
 FixChat is a simple, lightweight plugin that makes chatting with your friends much easier.
 
-# Features
+## Features
 
 * Adds **aliases for the tell command** so players can use /tell, /t, /whisper, and /w to send private messages to others.
 * Adds **reply functionality** so players can easily reply using the added /reply and /r commands.
 * Adds **Dynmap integration** to show achievement unlocks, player deaths, /me messages, and /say messages.
 
-# Commands
+## Commands
 
 This plugin adds aliases for the tell command so you can use any of the following to send a whisper:
 
@@ -20,17 +22,18 @@ You can also easily reply to the last player you received a whisper from by usin
 * /reply <message>
 * /r <message>
 
-# Configuration
+## Configuration
 
-At this point there is no configuration needed - just drop in into your plugins directory.
+At this point there is no configuration needed - just drop it into your plugins directory.
 
-# Links
+## Links
 
 * Website: <http://codeski.com/#fixchat>
 * Issues: <https://github.com/codeski/fixchat/issues>
 * Source: <https://github.com/codeski/fixchat>
+* Bukkit: <http://dev.bukkit.org/bukkit-plugins/fixchat>
 
-# License
+## License
 
 Copyright © 2013 Kevin Breslin
 
