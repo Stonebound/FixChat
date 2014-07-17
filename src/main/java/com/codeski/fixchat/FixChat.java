@@ -71,6 +71,7 @@ public class FixChat extends JavaPlugin implements Listener
 		}
 	}
 
+	private final HashMap<Player, Boolean> away = new HashMap<Player, Boolean>();
 	private final HashMap<Player, Player> reply = new HashMap<Player, Player>();
 	private Server server;
 
@@ -106,6 +107,18 @@ public class FixChat extends JavaPlugin implements Listener
 			} else {
 				reply.put(reply.get(from), from);
 				server.dispatchCommand(from, "tell " + reply.get(from).getName() + " " + Joiner.on(' ').join(args));
+				return true;
+			}
+		else if (cmd.getName().equalsIgnoreCase("afk"))
+			if (from == null) {
+				sender.sendMessage("The console cannot go away from keyboard.");
+				return true;
+			} else {
+				away.put((Player) sender, away.get(sender) == null ? true : !away.get(sender));
+				if (away.get(sender))
+					Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " is away from keyboard.");
+				else
+					Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " is no longer away from keyboard.");
 				return true;
 			}
 		return false;
