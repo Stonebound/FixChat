@@ -27,7 +27,3 @@ commands:
     usage: /r <message>
     permission: bukkit.command.tell
     permission-message: You do not have permission.
-  afk:
-    description: Toggle your status for being away from keyboard.
-    usage: /afk
-    permission-message: You do not have permission.
