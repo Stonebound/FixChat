@@ -128,7 +128,8 @@ public class FixChat extends JavaPlugin implements Listener
 						if (System.currentTimeMillis() - idle.get(p) > 300000) {
 							away.add(p);
 							Bukkit.broadcastMessage(ChatColor.YELLOW + p.getName() + " is away from keyboard.");
-							((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, p.getName() + " is away from keyboard.");
+							if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
+								((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, p.getName() + " is away from keyboard.");
 						}
 			}
 		}.runTaskTimer(this, 30 * 20, 30 * 20);
@@ -178,7 +179,8 @@ public class FixChat extends JavaPlugin implements Listener
 		if (away.contains(event.getPlayer())) {
 			away.remove(event.getPlayer());
 			Bukkit.broadcastMessage(ChatColor.YELLOW + event.getPlayer().getName() + " is no longer away from keyboard.");
-			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, event.getPlayer().getName() + " is no longer away from keyboard.");
+			if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
+				((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, event.getPlayer().getName() + " is no longer away from keyboard.");
 		}
 	}
 
