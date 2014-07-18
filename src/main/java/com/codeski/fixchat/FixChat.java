@@ -1,5 +1,6 @@
 package com.codeski.fixchat;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
@@ -15,6 +16,8 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.PlayerAchievementAwardedEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -71,7 +74,8 @@ public class FixChat extends JavaPlugin implements Listener
 		}
 	}
 
-	private final HashMap<Player, Boolean> away = new HashMap<Player, Boolean>();
+	private final ArrayList<Player> away = new ArrayList<Player>();
+	private final HashMap<Player, Long> idle = new HashMap<Player, Long>();
 	private final HashMap<Player, Player> reply = new HashMap<Player, Player>();
 	private Server server;
 
@@ -114,11 +118,13 @@ public class FixChat extends JavaPlugin implements Listener
 				sender.sendMessage("The console cannot go away from keyboard.");
 				return true;
 			} else {
-				away.put((Player) sender, away.get(sender) == null ? true : !away.get(sender));
-				if (away.get(sender))
+				if (away.contains(sender)) {
+					away.remove(sender);
 					Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " is away from keyboard.");
-				else
+				} else {
+					away.add((Player) sender);
 					Bukkit.broadcastMessage(ChatColor.YELLOW + sender.getName() + " is no longer away from keyboard.");
+				}
 				return true;
 			}
 		return false;
@@ -128,6 +134,17 @@ public class FixChat extends JavaPlugin implements Listener
 	public void onEnable() {
 		server = this.getServer();
 		server.getPluginManager().registerEvents(this, this);
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				for (Player p : Bukkit.getOnlinePlayers())
+					if (idle.get(p) != null && !away.contains(p))
+						if (System.currentTimeMillis() - idle.get(p) > 300000) {
+							away.add(p);
+							Bukkit.broadcastMessage(ChatColor.YELLOW + p.getName() + " is away from keyboard.");
+						}
+			}
+		}.runTaskTimer(this, 30 * 20, 30 * 20);
 	}
 
 	@EventHandler
@@ -158,6 +175,7 @@ public class FixChat extends JavaPlugin implements Listener
 
 	@EventHandler
 	public void onPlayerJoin(final PlayerJoinEvent event) {
+		idle.put(event.getPlayer(), System.currentTimeMillis());
 		if (event.getPlayer().hasPermission("bukkit.command.list"))
 			new BukkitRunnable() {
 				@Override
@@ -165,6 +183,20 @@ public class FixChat extends JavaPlugin implements Listener
 					server.dispatchCommand(event.getPlayer(), "list");
 				}
 			}.runTaskLater(this, 1);
+	}
+
+	@EventHandler
+	public void onPlayerMove(PlayerMoveEvent event) {
+		idle.put(event.getPlayer(), System.currentTimeMillis());
+		if (away.contains(event.getPlayer())) {
+			away.remove(event.getPlayer());
+			Bukkit.broadcastMessage(ChatColor.YELLOW + event.getPlayer().getName() + " is no longer away from keyboard.");
+		}
+	}
+
+	public void onPlayerQuit(final PlayerQuitEvent event) {
+		idle.remove(event.getPlayer());
+		away.remove(event.getPlayer());
 	}
 
 	@EventHandler
