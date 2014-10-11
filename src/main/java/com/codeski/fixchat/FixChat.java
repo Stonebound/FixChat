@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerAchievementAwardedEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -139,6 +140,17 @@ public class FixChat extends JavaPlugin implements Listener
 	public void onPlayerAchievement(PlayerAchievementAwardedEvent event) {
 		if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, event.getPlayer().getName() + " has just earned the achievement [" + Achievement.valueOf(event.getAchievement().name()) + "]");
+	}
+
+	@EventHandler
+	public void onPlayerChat(AsyncPlayerChatEvent event) {
+		idle.put(event.getPlayer(), System.currentTimeMillis());
+		if (away.contains(event.getPlayer())) {
+			away.remove(event.getPlayer());
+			Bukkit.broadcastMessage(ChatColor.YELLOW + event.getPlayer().getName() + " is no longer away from keyboard.");
+			if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
+				((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, event.getPlayer().getName() + " is no longer away from keyboard.");
+		}
 	}
 
 	@EventHandler
