@@ -9,9 +9,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.event.player.PlayerAchievementAwardedEvent;
@@ -77,6 +79,7 @@ public class FixChat extends JavaPlugin implements Listener
 	}
 
 	private final ArrayList<Player> away = new ArrayList<Player>();
+	private final HashMap<Player, Long> knockback = new HashMap<Player, Long>();
 	private final HashMap<Player, Long> idle = new HashMap<Player, Long>();
 	private final HashMap<Player, Player> reply = new HashMap<Player, Player>();
 	private Server server;
@@ -138,6 +141,12 @@ public class FixChat extends JavaPlugin implements Listener
 	}
 
 	@EventHandler
+	public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+		if (event.getEntityType() == EntityType.PLAYER)
+			knockback.put((Player) event.getEntity(), System.currentTimeMillis());
+	}
+
+	@EventHandler
 	public void onPlayerAchievement(PlayerAchievementAwardedEvent event) {
 		if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, event.getPlayer().getName() + " has just earned the achievement [" + Achievement.valueOf(event.getAchievement().name()) + "]");
@@ -189,7 +198,7 @@ public class FixChat extends JavaPlugin implements Listener
 	@EventHandler
 	public void onPlayerMove(PlayerMoveEvent event) {
 		idle.put(event.getPlayer(), System.currentTimeMillis());
-		if (away.contains(event.getPlayer())) {
+		if (away.contains(event.getPlayer()) && (knockback.get(event.getPlayer()) == null || knockback.get(event.getPlayer()) < System.currentTimeMillis() - 3000)) {
 			away.remove(event.getPlayer());
 			Bukkit.broadcastMessage(ChatColor.YELLOW + event.getPlayer().getName() + " is no longer away from keyboard.");
 			if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))
