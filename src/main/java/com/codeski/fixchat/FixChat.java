@@ -59,6 +59,7 @@ public class FixChat extends JavaPlugin implements Listener
 		ON_A_RAIL("On A Rail"),
 		OPEN_INVENTORY("Taking Inventory"),
 		OVERKILL("Overkill"),
+		OVERPOWERED("Overpowered"),
 		SNIPE_SKELETON("Sniper Duel"),
 		SPAWN_WITHER("The Beginning?"),
 		THE_END("The End.");
