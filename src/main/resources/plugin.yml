@@ -1,6 +1,6 @@
 name: FixChat
 main: com.codeski.fixchat.FixChat
-version: ${project.version}
+version: @version@
 commands:
   whisper:
     description: Send a private message to a player
