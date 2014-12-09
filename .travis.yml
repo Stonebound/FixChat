@@ -2,7 +2,7 @@ language: java
 deploy:
   provider: releases
   api-key: "8638657fcd2e4e9d3ad9e4173733d41b8e74d1c5"
-	file-glob: true
+  file-glob: true
   file: "target/FixChat-*.jar"
   skip_cleanup: true
   on:
