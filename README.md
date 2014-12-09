@@ -32,6 +32,7 @@ At this point there is no configuration needed - just drop it into your plugins 
 * Website: <http://codeski.com/#fixchat>
 * Issues: <https://github.com/Codeski/FixChat/issues>
 * Source: <https://github.com/Codeski/FixChat>
+* Builds: <https://travis-ci.org/Codeski/FixChat>
 * Bukkit: <http://dev.bukkit.org/bukkit-plugins/fixchat>
 
 ## License
