@@ -173,9 +173,9 @@ public class FixChat extends JavaPlugin implements Listener
 					to = p;
 			if (to != null)
 				reply.put(to, event.getPlayer());
-		} else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("/say") && event.getPlayer().hasPermission("bukkit.command.say"))
+		} else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("/say") && event.getPlayer().hasPermission("minecraft.command.say"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(event.getPlayer().getName(), Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
-		else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("/me") && event.getPlayer().hasPermission("bukkit.command.me"))
+		else if (Bukkit.getPluginManager().isPluginEnabled("dynmap") && msg.length > 1 && msg[0].equalsIgnoreCase("/me") && event.getPlayer().hasPermission("minecraft.command.me"))
 			((DynmapCommonAPI) Bukkit.getPluginManager().getPlugin("dynmap")).sendBroadcastToWeb(null, "* " + event.getPlayer().getName() + " " + Joiner.on(' ').join(Arrays.copyOfRange(msg, 1, msg.length)));
 	}
 
@@ -188,7 +188,7 @@ public class FixChat extends JavaPlugin implements Listener
 	@EventHandler
 	public void onPlayerJoin(final PlayerJoinEvent event) {
 		idle.put(event.getPlayer(), System.currentTimeMillis());
-		if (event.getPlayer().hasPermission("bukkit.command.list"))
+		if (event.getPlayer().hasPermission("minecraft.command.list"))
 			new BukkitRunnable() {
 				@Override
 				public void run() {
