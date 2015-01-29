@@ -23,6 +23,14 @@ You can also easily reply to the last player you received a whisper from by usin
 * `/reply <message>`
 * `/r <message>`
 
+Operators or users with the appropriate permission can set the message of the day:
+
+* `/motd <message>`
+
+## Permissions
+
+* `fixchat.motd` Allows the user to set the message of the day.
+
 ## Configuration
 
 At this point there is no configuration needed - just drop it into your plugins directory.
