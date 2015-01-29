@@ -6,7 +6,7 @@ Simple, lightweight Bukkit plugin that makes chatting with your friends in game,
 
 * Adds **aliases for the tell command** so players can use /tell, /t, /whisper, and /w to send private messages to others.
 * Adds **reply functionality** so players can easily reply using the added /reply and /r commands.
-* Adds **away from keyboard** detection and announcements so players know when others are idle or away.
+* Adds **away from keyboard** detection and announcements so players know when others are idle or away (unless they are vanished).
 * Adds **Dynmap integration** to show achievement unlocks, player deaths, /me messages, and /say messages.
 
 ## Commands
