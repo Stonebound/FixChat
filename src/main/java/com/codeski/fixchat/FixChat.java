@@ -26,6 +26,9 @@ import org.bukkit.event.server.ServerCommandEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.dynmap.DynmapCommonAPI;
+import org.kitteh.vanish.VanishCheck;
+import org.kitteh.vanish.VanishManager;
+import org.kitteh.vanish.VanishPlugin;
 
 import com.google.common.base.Joiner;
 
@@ -146,6 +149,14 @@ public class FixChat extends JavaPlugin implements Listener
 				for (Player p : Bukkit.getOnlinePlayers())
 					if (idle.get(p) != null && !away.contains(p))
 						if (System.currentTimeMillis() - idle.get(p) > 300000) {
+							if (Bukkit.getPluginManager().isPluginEnabled("VanishNoPacket")) {
+								VanishManager vanish = ((VanishPlugin) Bukkit.getPluginManager().getPlugin("VanishNoPacket")).getManager();
+								if (vanish != null)
+									if ((Boolean) new VanishCheck(vanish, p.getName()).call()) {
+										Bukkit.broadcastMessage("Player is vanished.");
+										return;
+									}
+							}
 							away.add(p);
 							Bukkit.broadcastMessage(ChatColor.YELLOW + p.getName() + " is away from keyboard.");
 							if (Bukkit.getPluginManager().isPluginEnabled("dynmap"))

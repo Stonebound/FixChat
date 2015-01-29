@@ -21,9 +21,13 @@ repositories {
   maven {
     url = 'http://repo.mikeprimm.com/'
   }
+  maven {
+  	url = 'http://repo.kitteh.org/content/groups/public/'
+  }
 }
 
 dependencies {
   compile 'org.bukkit:bukkit:1.7.2-R0.3'
   compile 'org.dynmap:DynmapCoreAPI:1.9.4'
+  compile 'org.kitteh:VanishNoPacket:3.19.1'
 }
