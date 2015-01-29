@@ -24,6 +24,9 @@ repositories {
   maven {
   	url = 'http://repo.kitteh.org/content/groups/public/'
   }
+  maven {
+  	url = 'http://minor.royaldev.org:8081/nexus/content/groups/public/'
+  }
 }
 
 dependencies {
