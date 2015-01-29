@@ -9,6 +9,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -79,8 +80,9 @@ public class FixChat extends JavaPlugin implements Listener
 	}
 
 	private final ArrayList<Player> away = new ArrayList<Player>();
-	private final HashMap<Player, Long> knockback = new HashMap<Player, Long>();
+	private FileConfiguration configuration;
 	private final HashMap<Player, Long> idle = new HashMap<Player, Long>();
+	private final HashMap<Player, Long> knockback = new HashMap<Player, Long>();
 	private final HashMap<Player, Player> reply = new HashMap<Player, Player>();
 	private Server server;
 
@@ -118,11 +120,24 @@ public class FixChat extends JavaPlugin implements Listener
 				server.dispatchCommand(from, "tell " + reply.get(from).getName() + " " + Joiner.on(' ').join(args));
 				return true;
 			}
+		else if (cmd.getName().equalsIgnoreCase("motd"))
+			if (args.length < 1) {
+				sender.sendMessage(ChatColor.RED + "Usage: /" + cmd.getName() + " <message>");
+				return true;
+			} else {
+				configuration.set("motd", Joiner.on(' ').join(args));
+				this.saveConfig();
+				return true;
+			}
 		return false;
 	}
 
 	@Override
 	public void onEnable() {
+		this.saveDefaultConfig();
+		configuration = this.getConfig();
+		configuration.options().copyDefaults(true);
+		this.saveConfig();
 		server = this.getServer();
 		server.getPluginManager().registerEvents(this, this);
 		new BukkitRunnable() {
@@ -188,13 +203,17 @@ public class FixChat extends JavaPlugin implements Listener
 	@EventHandler
 	public void onPlayerJoin(final PlayerJoinEvent event) {
 		idle.put(event.getPlayer(), System.currentTimeMillis());
-		if (event.getPlayer().hasPermission("minecraft.command.list"))
-			new BukkitRunnable() {
-				@Override
-				public void run() {
+		new BukkitRunnable() {
+			@Override
+			public void run() {
+				if (event.getPlayer().hasPermission("minecraft.command.list"))
 					server.dispatchCommand(event.getPlayer(), "list");
+				if (configuration.getString("motd") != null && configuration.getString("motd").length() > 0) {
+					event.getPlayer().sendMessage("Message of the day:");
+					event.getPlayer().sendMessage(configuration.getString("motd"));
 				}
-			}.runTaskLater(this, 1);
+			}
+		}.runTaskLater(this, 1);
 	}
 
 	@EventHandler

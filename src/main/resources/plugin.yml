@@ -27,3 +27,8 @@ commands:
     usage: /r <message>
     permission: bukkit.command.tell
     permission-message: You do not have permission.
+  motd:
+    description: Set the message of the day for the server.
+    usage: /motd <message>
+    permission: fixchat.motd
+    permission-message: You do not have permission.
