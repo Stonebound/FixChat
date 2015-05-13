@@ -32,3 +32,4 @@ commands:
     usage: /motd <message>
     permission: fixchat.motd
     permission-message: You do not have permission.
+softdepend: [dynmap, VanishNoPacket]
