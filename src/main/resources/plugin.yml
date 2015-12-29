@@ -1,5 +1,5 @@
 name: FixChat
-main: com.codeski.fixchat.FixChat
+main: com.codeski.fixchat.FixChatCB
 version: @version@
 commands:
   whisper:
