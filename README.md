@@ -1,6 +1,6 @@
 # FixChat [![Build Status](https://travis-ci.org/Codeski/FixChat.svg?branch=master)](https://travis-ci.org/Codeski/FixChat)
 
-Simple, lightweight Bukkit plugin that makes chatting with your friends in game, and on dynmap much easier.
+Simple plugin for Bukkit and Sponge that makes chatting with your friends in game, and on Dynmap much easier.
 
 ## Features
 
