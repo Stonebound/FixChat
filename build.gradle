@@ -37,7 +37,7 @@ repositories {
 
 dependencies {
   compile 'org.bukkit:bukkit:1.9-R0.1-SNAPSHOT'
-  compile 'org.spongepowered:spongeapi:3.0.0'
+  compile 'org.spongepowered:spongeapi:4.0.3'
   compile 'org.dynmap:DynmapCoreAPI:1.9.4'
   compile 'org.kitteh:VanishNoPacket:3.19.1'
 }
