@@ -28,7 +28,7 @@ import org.spongepowered.api.text.format.TextColors;
 
 import com.codeski.fixchat.FixChat.Strings;
 
-@Plugin(id = "FixChat", name = "FixChat", version = "@version@")
+@Plugin(id = "com.codeski.fixchat", name = "FixChat", description = "Simple plugin for Bukkit and Sponge that makes chatting with your friends in game, and on Dynmap much easier.", version = "@version@")
 public class FixChatSP {
     private final ArrayList<Player> away = new ArrayList<Player>();
     private final MessageChannel broadcast = Sponge.getGame().getServer().getBroadcastChannel();
