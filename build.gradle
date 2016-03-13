@@ -28,6 +28,7 @@ processResources {
 
 repositories {
   mavenCentral()
+  maven { url = 'https://hub.spigotmc.org/nexus/content/groups/public/' }
   maven { url = 'http://repo.bukkit.org/content/groups/public/' }
   maven { url = 'http://repo.spongepowered.org/maven/' }
   maven { url = 'http://repo.mikeprimm.com/' }
@@ -35,7 +36,7 @@ repositories {
 }
 
 dependencies {
-  compile 'org.bukkit:bukkit:1.7.2-R0.3'
+  compile 'org.bukkit:bukkit:1.9-R0.1-SNAPSHOT'
   compile 'org.spongepowered:spongeapi:3.0.0'
   compile 'org.dynmap:DynmapCoreAPI:1.9.4'
   compile 'org.kitteh:VanishNoPacket:3.19.1'
