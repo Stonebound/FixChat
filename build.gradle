@@ -4,7 +4,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 
 group = 'com.codeski'
-version = '1.3.6-SNAPSHOT'
+version = '1.4.0'
 sourceCompatibility = '1.8'
 
 task filter(type: Copy) {
