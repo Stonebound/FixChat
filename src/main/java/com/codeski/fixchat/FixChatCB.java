@@ -99,7 +99,7 @@ public class FixChatCB extends JavaPlugin implements Listener {
 		new BukkitRunnable() {
 			@Override
 			public void run() {
-				for (Player p : Bukkit.getOnlinePlayers())
+				for (Player p : server.getOnlinePlayers())
 					if (idle.get(p) != null && !away.contains(p))
 						if (System.currentTimeMillis() - idle.get(p) > FixChat.AWAY) {
 							if (Bukkit.getPluginManager().isPluginEnabled("VanishNoPacket")) {
