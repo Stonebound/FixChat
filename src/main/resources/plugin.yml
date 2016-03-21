@@ -5,27 +5,27 @@ commands:
   whisper:
     description: Send a private message to a player
     usage: /whisper <player> <message>
-    permission: bukkit.command.tell
+    permission: minecraft.command.tell
     permission-message: You do not have permission.
   reply:
     description: Reply to the last player that sent you a private message
     usage: /reply <message>
-    permission: bukkit.command.tell
+    permission: minecraft.command.tell
     permission-message: You do not have permission.
   t:
     description: Send a private message to a player
     usage: /t <player> <message>
-    permission: bukkit.command.tell
+    permission: minecraft.command.tell
     permission-message: You do not have permission.
   w:
     description: Send a private message to a player
     usage: /w <player> <message>
-    permission: bukkit.command.tell
+    permission: minecraft.command.tell
     permission-message: You do not have permission.
   r:
     description: Reply to the last player that sent you a private message
     usage: /r <message>
-    permission: bukkit.command.tell
+    permission: minecraft.command.tell
     permission-message: You do not have permission.
   motd:
     description: Set the message of the day for the server.
